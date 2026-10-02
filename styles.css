@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Parisienne&display=swap');
+
+:root {
+  --page-width: min(100vw, 680px);
+  --rose: #b95643;
+  --paper: #f8f4ef;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--paper);
+}
+
+body {
+  overflow-x: hidden;
+  color: #111;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, a { -webkit-tap-highlight-color: transparent; }
+
+.screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.screen-cover {
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,255,255,.82), rgba(248,244,239,.92) 72%),
+    #f8f4ef;
+  padding: 20px;
+}
+
+.cover-art {
+  position: relative;
+  width: min(100%, calc(100vh * 447 / 629), 540px);
+  aspect-ratio: 447 / 629;
+  background: url("assets/envelope.webp") center / 100% 100% no-repeat;
+  filter: drop-shadow(0 18px 28px rgba(70,35,25,.10));
+}
+
+.envelope-hotspot {
+  position: absolute;
+  left: 10%;
+  top: 46%;
+  width: 80%;
+  height: 31%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 18px;
+}
+
+.envelope-hotspot:focus-visible {
+  outline: 2px solid #b95643;
+  outline-offset: 5px;
+}
+
+.tap-hint {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font: 500 15px/1.1 "Cormorant Garamond", serif;
+  color: #8f4b3d;
+  background: rgba(255,255,255,.76);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 18px rgba(70,35,25,.08);
+  white-space: nowrap;
+}
+
+.screen-invitation {
+  display: block;
+  min-height: 0;
+  background: #f8f4ef;
+}
+
+.invitation-canvas {
+  position: relative;
+  width: var(--page-width);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.invitation-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.hotspot {
+  position: absolute;
+  display: block;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.control-hotspot {
+  top: 24.15%;
+  height: 2.0%;
+  z-index: 20;
+  border-radius: 999px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Cada zona coincide con uno de los cinco iconos del reproductor de la invitación. */
+.favorite-hotspot { left: 34%; width: 8%; }
+.previous-hotspot { left: 41%; width: 8%; }
+.play-hotspot {
+  left: 46%;
+  width: 9%;
+  height: 2.5%;
+}
+.next-hotspot { left: 52%; width: 8%; }
+.volume-hotspot { left: 58%; width: 8%; }
+
+.control-hotspot:focus-visible,
+.location-hotspot:focus-visible,
+.confirm-hotspot:focus-visible {
+  outline: 2px solid #b95643;
+  outline-offset: 3px;
+}
+
+/* El rótulo "Cuenta regresiva" está dibujado en la imagen. El cronómetro queda debajo. */
+.countdown {
+  position: absolute;
+  left: 22%;
+  top: 34.0%;
+  width: 56%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(20px, 30.1vw, 44px);
+  text-align: center;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.countdown .time {
+  min-width: clamp(40px, 7.5vw, 54px);
+}
+
+.countdown strong {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(24px, 4.8vw, 36px);
+  font-weight: 600;
+  line-height: .95;
+  color: #b95643;
+}
+
+.countdown small {
+  display: block;
+  margin-top: 5px;
+  font: 600 clamp(7px, 1.35vw, 10px)/1 "Cormorant Garamond", serif;
+  letter-spacing: .06em;
+  color: #6d4036;
+}
+
+.location-hotspot {
+  left: 39%;
+  top: 70.1%;
+  width: 23%;
+  height: 3.0%;
+  border-radius: 999px;
+  z-index: 5;
+}
+
+.confirm-hotspot {
+  left: 61%;
+  top: 90.6%;
+  width: 22%;
+  height: 2.2%;
+  margin-top:100px;
+  border-radius: 999px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+[hidden] { display: none !important; }
+
+@media (min-width: 900px) {
+  .screen-cover { padding: 28px; }
+  .tap-hint { font-size: 16px; }
+}
+
+@media (max-width: 380px) {
+  .tap-hint { font-size: 30px; padding: 7px 11px; }
+  .countdown {
+  position: absolute;
+  left: 22%;
+  top: 34.0%;
+  width: 56%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(10px, 2.1vw, 18px);
+  text-align: center;
+  pointer-events: none;
+  z-index: 5;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cover-art { animation: softFloat 4.5s ease-in-out infinite; }
+  @keyframes softFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+}

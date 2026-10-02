@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f4ef">
+  <title>Mis 15 Años — Graciela</title>
+  <meta name="description" content="Invitación digital de los 15 años de Graciela">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <section id="cover" class="screen screen-cover" aria-label="Invitación">
+      <div class="cover-art">
+        <button id="openInvitation" class="hotspot envelope-hotspot"
+                aria-label="Abrir invitación" title="Abrir invitación"></button>
+      </div>
+      <p class="tap-hint">Toca la carta para abrir la invitación</p>
+    </section>
+
+    <section id="invitation" class="screen screen-invitation"
+             aria-label="Detalles de la invitación" hidden>
+      <div class="invitation-canvas">
+        <img src="assets/invitation.webp"
+             alt="Invitación de 15 años de Graciela"
+             class="invitation-art">
+
+        <!-- Controles individuales sobre cada icono del diseño original. -->
+        <button id="favoriteButton" class="hotspot control-hotspot favorite-hotspot"
+                type="button" aria-label="Marcar canción como favorita"></button>
+        <button id="previousButton" class="hotspot control-hotspot previous-hotspot"
+                type="button" aria-label="Reiniciar canción"></button>
+        <button id="playButton" class="hotspot control-hotspot play-hotspot"
+                type="button" aria-label="Reproducir o pausar la canción">
+          <span id="playIcon" aria-hidden="true"></span>
+        </button>
+        <button id="nextButton" class="hotspot control-hotspot next-hotspot"
+                type="button" aria-label="Avanzar 10 segundos"></button>
+        <button id="volumeButton" class="hotspot control-hotspot volume-hotspot"
+                type="button" aria-label="Subir volumen"></button>
+
+        <!-- El rótulo ya está dibujado en la invitación; aquí van solamente los datos. -->
+        <div id="countdown" class="countdown" aria-live="polite">
+          <div class="time"><strong id="days">00</strong><small>DÍAS</small></div>
+          <div class="time"><strong id="hours">00</strong><small>HORAS</small></div>
+          <div class="time"><strong id="minutes">00</strong><small>MIN</small></div>
+          <div class="time"><strong id="seconds">00</strong><small>SEG</small></div>
+        </div>
+
+        <a class="hotspot location-hotspot"
+           href="https://maps.app.goo.gl/tH89Vq44BTtFFuzWA?g_st=awb"
+           target="_blank" rel="noopener"
+           aria-label="Ver la ubicación"></a>
+
+        <button id="confirmButton" class="hotspot confirm-hotspot"
+                type="button" aria-label="Confirmar asistencia"></button>
+      </div>
+    </section>
+  </main>
+
+  <audio id="music" preload="auto" loop playsinline>
+    <source src="assets/cancion.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
